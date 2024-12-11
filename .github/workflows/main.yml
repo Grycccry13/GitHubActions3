@@ -1,0 +1,27 @@
+name: Archive and Telegram Notification
+
+on:
+  push:
+    branches:
+      - main 
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create archive
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-archive
+          path: folder1 folder2 folder3
+
+      - name: Send Telegram notification
+        uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.7059037869:AAG_QV0xD08uGCXHepnJssKLBtMyN-Jcku8 }} 
+          chat_id: ${{ secrets.8374915260 }} 
+          message: "Три папки успешно заархивированы и сохранены как артефакт."
+
+
